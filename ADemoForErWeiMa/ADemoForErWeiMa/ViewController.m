@@ -53,6 +53,8 @@
     dispatch_queue_t serialqueue = dispatch_queue_create("serialqueue", DISPATCH_QUEUE_SERIAL);
     [_output setMetadataObjectsDelegate:self queue:serialqueue];
     _session = [[AVCaptureSession alloc] init];
+    // 提高图片质量，提高识别效率
+    _session.sessionPreset = AVCaptureSessionPreset1920x1080;
     if ([_session canAddInput:_input]) {
         [_session addInput:_input];
     }
